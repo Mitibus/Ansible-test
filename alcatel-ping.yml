@@ -9,7 +9,7 @@
     ansible_python_interpreter: "python"
   tasks:
     - name: Test ale_aos_ping Python module
-    ale_aos_ping:
-      host: "{{ inventory_hostname }}"
-      username: "{{ login }}"
-      password: "{{ login }}"
+      ale_aos_ping:
+        host: "{{ inventory_hostname }}"
+        username: "{{ login }}"
+        password: "{{ login }}"
