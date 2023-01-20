@@ -1,8 +1,7 @@
 ---
-- name: Test Playbook for ale_aos_ping module
+- name: This is a test for ale_aos_ping module
   hosts: ale
   connection: local
-  gather_facts: no
   roles:
     - gmoisio.ale_aos
   vars:
@@ -13,3 +12,5 @@
         host: "{{ inventory_hostname }}"
         username: "{{ login }}"
         password: "{{ password }}"
+      register: result
+    - debug: var=result
