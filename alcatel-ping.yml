@@ -12,4 +12,4 @@
       ale_aos_ping:
         host: "{{ inventory_hostname }}"
         username: "{{ login }}"
-        password: "{{ login }}"
+        password: "{{ password }}"
