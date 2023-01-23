@@ -7,19 +7,10 @@
   vars:
     ansible_python_interpreter: "python"
   tasks:
-    - name: Test ale_aos_command Python module
+    - name: Save configuration to ftp server
       ale_aos_command:
         host: "{{ inventory_hostname }}"
         username: "{{ login }}"
         password: "{{ password }}"
         timing: True
-        command: show configuration snapshot all
-      register: configuration
-    - name: Print configuration
-      debug:
-        msg: "{{ configuration.output }}"
-    - name: Save configuration to file
-      copy:
-        content: "{{ configuration.output }}"
-        dest: "{{ inventory_hostname }}_{{ '%Y-%m-%d_%H:%M' | strftime }}.conf"
-      when: configuration.output
+        command: "tftp {{ tftp_server }} PUT source-file /flash/certified/boot.cfg DESTINATION-FILE {{ inventory_hostname }}_{{ '%Y-%m-%d_%H:%M' | strftime }}.conf"
