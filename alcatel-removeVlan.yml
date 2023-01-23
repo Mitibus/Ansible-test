@@ -1,18 +1,17 @@
 ---
-- name: This is a test for ale_aos_command module
-  hosts: alcatel
+- name: This command remove vlan on alcatel switches
   connection: local
   roles:
     - gmoisio.ale_aos
   vars:
     ansible_python_interpreter: "python"
   tasks:
-    - name: Add vlan {{ vlan_name }} with vid {{ vlan_id }}
+    - name: Remove vlan {{ vlan_id }}
       ale_aos_command:
         host: "{{ inventory_hostname }}"
         username: "{{ login }}"
         password: "{{ password }}"
-        command: vlan {{ vlan_id }} enable name {{ vlan_name }}
+        command: no vlan {{ vlan_id }}
     - name: Get Vlan list
       ale_aos_command:
         host: "{{ inventory_hostname }}"
