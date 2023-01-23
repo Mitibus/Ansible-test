@@ -1,6 +1,6 @@
 ---
 - name: This is a test for ale_aos_command module
-  hosts: ale
+  hosts: alcatel
   connection: local
   roles:
     - gmoisio.ale_aos
@@ -23,4 +23,4 @@
       register: vlan_list
     - name: Display Vlan List
       debug:
-        mdsg: "{{ vlan_list }}"
+        msg: "{{ vlan_list }}"
