@@ -1,6 +1,6 @@
 ---
 - name: This command remove vlan on alcatel switches
-  host: alcatel
+  hosts: alcatel
   connection: local
   roles:
     - gmoisio.ale_aos
