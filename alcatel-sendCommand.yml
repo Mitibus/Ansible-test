@@ -1,0 +1,16 @@
+---
+- name: This is a test for ale_aos_command module
+  hosts: ale
+  connection: local
+  roles:
+    - gmoisio.ale_aos
+  vars:
+    ansible_python_interpreter: "python"
+  tasks:
+    - name: Test ale_aos_command Python module
+      ale_aos_command:
+        host: "{{ inventory_hostname }}"
+        username: "{{ login }}"
+        password: "{{ password }}"
+        command: show running-directory
+        search: "Running Configuration"
