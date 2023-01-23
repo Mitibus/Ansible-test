@@ -13,4 +13,4 @@
         username: "{{ login }}"
         password: "{{ password }}"
         timing: True
-        command: tftp {{ tftp_server }} PUT source-file /flash/certified/boot.cfg DESTINATION-FILE {{ inventory_hostname }}_{{ '%Y-%m-%d_%H:%M' | strftime }}.cfg
+        command: "tftp {{ tftp_server }} PUT source-file /flash/certified/boot.cfg DESTINATION-FILE {{ inventory_hostname }}.cfg"
