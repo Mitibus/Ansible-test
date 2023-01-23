@@ -1,5 +1,5 @@
 ---
-- name: This is a test for ale_aos_config module
+- name: This is a test for ale_aos_command module
   hosts: ale
   connection: local
   roles:
@@ -7,10 +7,19 @@
   vars:
     ansible_python_interpreter: "python"
   tasks:
-    - name: Test ale_aos_config Python module
-      ale_aos_config:
+    - name: Test ale_aos_command Python module
+      ale_aos_command:
         host: "{{ inventory_hostname }}"
         username: "{{ login }}"
         password: "{{ password }}"
-      register: result
-    - debug: var=result
+        timing: True
+        command: show configuration snapshot all
+      register: configuration
+    - name: Print configuration
+      debug:
+        msg: "{{ configuration.output }}"
+    - name: Save configuration to file
+      copy:
+        content: "{{ configuration.output }}"
+        dest: "{{ inventory_hostname }}_{{ '%Y-%m-%d_%H:%M' | strftime }}.conf"
+      when: configuration.output
