@@ -38,4 +38,5 @@
         username: "{{ login }}"
         password: "{{ password }}"
         command: vlan {{ vlan_id }} 802.1q {{ item }} "TAG PORT {{ item }} VLAN {{ vlan_id }}"
+        timing: True
       loop: "{{ trunk_port }}"
