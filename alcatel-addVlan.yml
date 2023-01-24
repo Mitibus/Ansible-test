@@ -21,8 +21,10 @@
         command: show vlan port
         timing: True
       register: vlan_list
-    - set_fact:
-        new_list: "{{ new_list | default([]) + [item] }}"
-      with_items: "{{ vlan_list }}"
-      when: '"qtagged" in item'
-    - debug: var=new_list
+    - name: Select only trunk port
+      vars:
+        array: "{{ vlan_list.output.split('\n') }}"
+      debug:
+        msg: "{{ item }}"
+      loop: "{{ array }}"
+      when: "'qtagged' in item"
