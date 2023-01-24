@@ -23,6 +23,6 @@
       register: vlan_list
     - name: Select only trunk port
       vars:
-        array: "{{ vlan_list.split('\n') }}"
+        array: "{{ vlan_list.output.split('\n') }}"
       debug:
         msg: "{{ array }}"
