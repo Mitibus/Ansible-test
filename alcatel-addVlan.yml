@@ -22,6 +22,7 @@
         timing: True
       register: vlan_list
     - name: Select only trunk port
-      array: "{{ vlan_list | regex_findall('qtagged', multiline=True, ignorecase=True) }}"
+      vars:
+        array: "{{ vlan_list | regex_findall('qtagged', multiline=True, ignorecase=True) }}"
       debug:
         msg: "{{ array }}"
