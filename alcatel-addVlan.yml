@@ -30,7 +30,7 @@
       when: "'qtagged' in item"
     - name: Select only interfaces name
       set_fact:
-        trunk_port: "{{ trunk_port | default([]) + [item.split(' ')]}}"
+        trunk_port: "{{ trunk_port | default([]) + [item.split(' ') | Select()]}}"
       loop: "{{vlan_sorted}}"
     - name: Show interfaces
       debug:
