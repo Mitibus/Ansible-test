@@ -23,6 +23,6 @@
       register: vlan_list
     - name: Select only trunk port
       vars:
-        array: "{{ vlan_list | regex_findall('qtagged', multiline=True, ignorecase=True) }}"
+        array: "{{ vlan_list.split('\n') }}"
       debug:
         msg: "{{ array }}"
