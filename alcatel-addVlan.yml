@@ -28,6 +28,7 @@
         vlan_sorted: "{{ vlan_sorted | default([]) + [item]}}"
       loop: "{{ array }}"
       when: "'qtagged' in item"
-    - name: Show connected esxi list information
-      debug:
-        var: vlan_sorted
+    - name: Select only interfaces name
+      set_fact:
+        trunk_port: "{{ vlan_sorted | default([]) + [item.split(' ')[1]]}}"
+      loop: "{{vlan_sorted}}"
