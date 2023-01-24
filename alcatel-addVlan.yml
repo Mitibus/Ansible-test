@@ -24,7 +24,7 @@
     - name: Select only trunk port
       vars:
         array: "{{ vlan_list.output.split('\n') }}"
-      set-fact:
+      set_fact:
         vlan_sorted: "{{ vlan_sorted | default([]) + [item]}}"
       loop: "{{ array }}"
       when: "'qtagged' in item"
