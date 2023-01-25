@@ -34,7 +34,7 @@
       loop: "{{vlan_sorted}}"
     - name: Add new vlan to trunk
       vars:
-        ports: { { trunk_port | unique } }
+        ports: "{{ trunk_port | unique }}"
       ale_aos_command:
         host: "{{ inventory_hostname }}"
         username: "{{ login }}"
