@@ -41,4 +41,3 @@
         password: "{{ password }}"
         command: vlan {{ vlan_id }} 802.1q {{ ports | join(' ') }}
         timing: True
-      loop: "{{ trunk_port | unique }}"
