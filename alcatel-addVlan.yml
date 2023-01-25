@@ -33,10 +33,12 @@
         trunk_port: "{{ trunk_port | default([]) + [item.split(' ')[5]]}}"
       loop: "{{vlan_sorted}}"
     - name: Add new vlan to trunk
+      vars:
+        ports: { { trunk_port | unique } }
       ale_aos_command:
         host: "{{ inventory_hostname }}"
         username: "{{ login }}"
         password: "{{ password }}"
-        command: vlan {{ vlan_id }} 802.1q {{ item }} "TAG PORT {{ item }} VLAN {{ vlan_id }}"
+        command: vlan {{ vlan_id }} 802.1q {{ ports | join(' ') }}
         timing: True
       loop: "{{ trunk_port | unique }}"
