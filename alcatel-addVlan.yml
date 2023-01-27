@@ -41,3 +41,4 @@
         password: "{{ password }}"
         command: vlan {{ vlan_id }} 802.1q {{ ports | join(' ') }}
         timing: True
+# Voir LLDP pour la découverte de ports

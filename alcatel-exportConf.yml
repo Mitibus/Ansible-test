@@ -1,0 +1,31 @@
+---
+- name: Export show interfaces status and show configuration snapshot in a file with host name
+  hosts: alcatel
+  connection: local
+  roles:
+    - gmoisio.ale_aos
+  vars:
+    ansible_python_interpreter: "python"
+  tasks:
+    - name: Get interfaces status
+      ale_aos_command:
+        host: "{{ inventory_hostname }}"
+        username: "{{ login }}"
+        password: "{{ password }}"
+        timing: True
+        command: "show interfaces status"
+      register: interface_brief
+    - name: Display interface status
+      debug:
+        msg: interface_brief.output
+    - name: Get configuration
+      ale_aos_command:
+        host: "{{ inventory_hostname }}"
+        username: "{{ login }}"
+        password: "{{ password }}"
+        timing: True
+        command: "show configuration snapshot"
+      register: configuration
+    - name: Display configuration
+      debug:
+        msg: configuration.output
