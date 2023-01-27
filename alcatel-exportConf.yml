@@ -17,7 +17,7 @@
       register: interface_brief
     - name: Display interface status
       debug:
-        msg: interface_brief.output
+        var: interface_brief.output
     - name: Get configuration
       ale_aos_command:
         host: "{{ inventory_hostname }}"
@@ -28,4 +28,4 @@
       register: configuration
     - name: Display configuration
       debug:
-        msg: configuration.output
+        var: configuration.output
