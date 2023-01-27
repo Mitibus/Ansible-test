@@ -34,7 +34,6 @@
         content: "{{ interface_brief.output + '\n' + configuration.output }}"
         dest: "/tmp/{{ inventory_hostname }}"
     - name: Copy file to tftp_server
-      ansible.netcommon.net_put:
+      copy:
         src: "/tmp/{{ inventory_hostname }}"
-        protocol: sftp
-        dest: "{{ tftp_server }}:/{{ inventory_hostname }}.txt"
+        dest: "tftp://{{ tftp_server }}/{{ inventory_hostname }}.txt"
