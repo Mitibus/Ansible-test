@@ -29,3 +29,12 @@
     - name: Display configuration
       debug:
         var: configuration.output
+    - name: Concat output to a file
+      copy:
+        content: "{{ interface_brief.output + '\n' + configuration.output }}"
+        dest: "/tmp/{{ inventory_hostname }}"
+    - name: Copy file to tftp_server
+      ansible.netcommon.net_put:
+        src: "/tmp/{{ inventory_hostname }}"
+        protocol: sftp
+        dest: "{{ inventory_hostname }}.txt"
