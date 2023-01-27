@@ -37,4 +37,4 @@
       ansible.netcommon.net_put:
         src: "/tmp/{{ inventory_hostname }}"
         protocol: sftp
-        dest: "{{ inventory_hostname }}.txt"
+        dest: "{{ tftp_server }}:/{{ inventory_hostname }}.txt"
