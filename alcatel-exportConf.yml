@@ -32,8 +32,8 @@
     - name: Concat output to a file
       copy:
         content: "{{ interface_brief.output + '\n' + configuration.output }}"
-        dest: "/tmp/{{ inventory_hostname }}"
-    - name: Copy file to tftp_server
-      copy:
-        src: "/tmp/{{ inventory_hostname }}"
-        dest: "tftp://{{ tftp_server }}/{{ inventory_hostname }}.txt"
+        dest: "/home/Alcatel-Conf-Parser/import/{{ inventory_hostname }}"
+    - name: Parse it to exploitable JSON
+      shell:
+        cmd: "python3 main.py"
+        chdir: "/home/Alcatel-Conf-Parser/"
