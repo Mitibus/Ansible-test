@@ -37,3 +37,7 @@
       shell:
         cmd: "python3 main.py"
         chdir: "/home/Alcatel-Conf-Parser/"
+    - name: Copy export folder content to TFTP
+      shell:
+        cmd: "tftp {{ tftp_server }} -c put {{ inventory_hostname }} {{ inventory_hostname }}"
+        chdir: "/home/Alcatel-Conf-Parser/export/"
