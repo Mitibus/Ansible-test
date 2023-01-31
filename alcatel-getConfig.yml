@@ -10,7 +10,7 @@
     - name: Save configuration to ftp server
       ale_aos_command:
         host: "{{ inventory_hostname }}"
-        username: "{{ login }}"
-        password: "{{ password }}"
+        username: "{{ switch_username }}"
+        password: "{{ switch_password }}"
         timing: True
         command: "tftp {{ tftp_server }} PUT source-file /flash/certified/boot.cfg DESTINATION-FILE {{ inventory_hostname }}.cfg"

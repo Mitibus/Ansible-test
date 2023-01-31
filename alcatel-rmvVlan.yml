@@ -10,14 +10,14 @@
     - name: Remove vlan {{ vlan_id }}
       ale_aos_command:
         host: "{{ inventory_hostname }}"
-        username: "{{ login }}"
-        password: "{{ password }}"
+        username: "{{ switch_username }}"
+        password: "{{ switch_password }}"
         command: no vlan {{ vlan_id }}
     - name: Get Vlan list
       ale_aos_command:
         host: "{{ inventory_hostname }}"
-        username: "{{ login }}"
-        password: "{{ password }}"
+        username: "{{ switch_username }}"
+        password: "{{ switch_password }}"
         command: show vlan
         timing: True
       register: vlan_list

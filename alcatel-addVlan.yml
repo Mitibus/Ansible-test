@@ -10,14 +10,14 @@
     - name: Add vlan {{ vlan_name }} with vid {{ vlan_id }}
       ale_aos_command:
         host: "{{ inventory_hostname }}"
-        username: "{{ login }}"
-        password: "{{ password }}"
+        username: "{{ switch_username }}"
+        password: "{{ switch_password }}"
         command: vlan {{ vlan_id }} enable name {{ vlan_name }}
     - name: Get Vlan port
       ale_aos_command:
         host: "{{ inventory_hostname }}"
-        username: "{{ login }}"
-        password: "{{ password }}"
+        username: "{{ switch_username }}"
+        password: "{{ switch_password }}"
         command: show vlan port
         timing: True
       register: vlan_list
@@ -37,8 +37,8 @@
         ports: "{{ trunk_port | unique }}"
       ale_aos_command:
         host: "{{ inventory_hostname }}"
-        username: "{{ login }}"
-        password: "{{ password }}"
+        username: "{{ switch_username }}"
+        password: "{{ switch_password }}"
         command: vlan {{ vlan_id }} 802.1q {{ ports | join(' ') }}
         timing: True
 # Voir LLDP pour la découverte de ports

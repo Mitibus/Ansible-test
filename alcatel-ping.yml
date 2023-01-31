@@ -10,7 +10,7 @@
     - name: Test ale_aos_ping Python module
       ale_aos_ping:
         host: "{{ inventory_hostname }}"
-        username: "{{ login }}"
-        password: "{{ password }}"
+        username: "{{ switch_username }}"
+        password: "{{ switch_password }}"
       register: result
     - debug: var=result

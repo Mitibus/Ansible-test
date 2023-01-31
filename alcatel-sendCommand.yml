@@ -10,7 +10,7 @@
     - name: Test ale_aos_command Python module
       ale_aos_command:
         host: "{{ inventory_hostname }}"
-        username: "{{ login }}"
-        password: "{{ password }}"
+        username: "{{ switch_username }}"
+        password: "{{ switch_password }}"
         command: show running-directory
         search: "Running Configuration"

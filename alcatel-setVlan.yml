@@ -10,14 +10,14 @@
     - name: Add vlan {{ vlan_name }} with vid {{ vlan_id }}
       ale_aos_command:
         host: "{{ inventory_hostname }}"
-        username: "{{ login }}"
-        password: "{{ password }}"
+        username: "{{ switch_username }}"
+        password: "{{ switch_password }}"
         command: vlan {{ vlan_id }} enable name {{ vlan_name }}
     - name: Get Vlan list
       ale_aos_command:
         host: "{{ inventory_hostname }}"
-        username: "{{ login }}"
-        password: "{{ password }}"
+        username: "{{ switch_username }}"
+        password: "{{ switch_password }}"
         command: show vlan
         timing: True
       register: vlan_list
