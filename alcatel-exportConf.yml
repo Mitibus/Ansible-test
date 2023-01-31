@@ -10,8 +10,8 @@
     - name: Get interfaces status
       ale_aos_command:
         host: "{{ inventory_hostname }}"
-        username: "{{ login }}"
-        password: "{{ password }}"
+        username: "{{ switch_username }}"
+        password: "{{ switch_password }}"
         timing: True
         command: "show interfaces status"
       register: interface_brief
@@ -21,8 +21,8 @@
     - name: Get configuration
       ale_aos_command:
         host: "{{ inventory_hostname }}"
-        username: "{{ login }}"
-        password: "{{ password }}"
+        username: "{{ switch_username }}"
+        password: "{{ switch_password }}"
         timing: True
         command: "show configuration snapshot"
       register: configuration
