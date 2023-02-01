@@ -1,6 +1,6 @@
 ---
 - name: This is a test for ale_aos_command module
-  hosts: alcatel
+  hosts:alcatelTest
   connection: local
   roles:
     - gmoisio.ale_aos
