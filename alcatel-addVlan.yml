@@ -28,6 +28,9 @@
         vlan_sorted: "{{ vlan_sorted | default([]) + [item]}}"
       loop: "{{ array }}"
       when: "'qtagged' in item"
+    - name: Debug interface vlan_list
+      debug:
+        var: vlan_sorted
     - name: Select only interfaces name
       set_fact:
         trunk_port: "{{ trunk_port | default([]) + [item.split(' ')[5]]}}"
