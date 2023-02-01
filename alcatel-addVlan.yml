@@ -13,6 +13,7 @@
         username: "{{ switch_username }}"
         password: "{{ switch_password }}"
         command: vlan {{ vlan_id }} enable name {{ vlan_name }}
+        timing: True
     - name: Get Vlan port
       ale_aos_command:
         host: "{{ inventory_hostname }}"
