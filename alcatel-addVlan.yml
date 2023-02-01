@@ -32,6 +32,9 @@
       set_fact:
         trunk_port: "{{ trunk_port | default([]) + [item.split(' ')[5]]}}"
       loop: "{{vlan_sorted}}"
+    - name: Debug interface vlan_list
+      debug:
+        var: trunk_port
     - name: Add new vlan to trunk
       vars:
         ports: "{{ trunk_port | unique }}"
