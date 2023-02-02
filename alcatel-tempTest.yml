@@ -13,7 +13,11 @@
         username: "{{ switch_username }}"
         password: "{{ switch_password }}"
         command: show vlan port
+        timing: True
       register: ports
+    - name: Debug
+      debug:
+        var: ports
     - name: Parse to JSON
       ansible.utils.cli_parse:
         text: "{{ ports.output }} | json"
