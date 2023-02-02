@@ -26,7 +26,7 @@
       ansible.builtin.group_by:
         key: "PORT"
         parents:
-          - "{{ ports_parsed }}"
+          - {{ ports_parsed }}
       register: result
     - name: Display result
       debug:
