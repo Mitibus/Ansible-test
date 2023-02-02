@@ -24,7 +24,7 @@
         set_fact: ports_parsed
     - name: Group data
       ansible.builtin.group_by:
-        key: "PORT"
+        key: PORT
         parents:
           - ports_parsed
       register: result
