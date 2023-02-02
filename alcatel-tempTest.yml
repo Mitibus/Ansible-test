@@ -15,14 +15,12 @@
         command: show vlan port
         timing: True
       register: ports
-    - name: Debug
-      debug:
-        var: ports
-    - name: Parse to JSON
+    - name: Parse data
       ansible.utils.cli_parse:
         text: "{{ ports.output }}"
         parser:
-          name: ansible.netcommon.native
+          name: ansible.netcommon.ttp
+          template_path: ./templates/alcatel_show_vlan_port.ttp
         set_fact: ports_parsed
     - name: Display result
       debug:
