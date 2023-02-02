@@ -1,0 +1,5 @@
+Value VLAN (\d+)
+Value PORT (\d+\/\d+)
+
+Start
+  ^${VLAN}\s+${PORT}\s+qtagged\s+forwarding -> Record
