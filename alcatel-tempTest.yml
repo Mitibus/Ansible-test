@@ -16,7 +16,7 @@
       register: ports
     - name: Parse to JSON
       ansible.utils.cli_parse:
-        command: ports | json
+        text: "{{ ports.output }}"
         parser:
           name: ansible.utils.json
         set_fact: ports_parsed
