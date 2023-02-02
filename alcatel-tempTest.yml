@@ -20,7 +20,7 @@
         var: ports
     - name: Parse to JSON
       ansible.utils.cli_parse:
-        text: "{{ ports.output }} | json"
+        text: "{{ ports }}"
         parser:
           name: ansible.utils.json
         set_fact: ports_parsed
