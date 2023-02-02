@@ -22,6 +22,11 @@
           name: ansible.utils.textfsm
           template_path: ./templates/alcatel_show_vlan_port.textfsm
         set_fact: ports_parsed
+    - name: Group data
+      ansible.builtin.group_by:
+        key: "PORT"
+        parents:
+          - ports_parsed
     - name: Display result
       debug:
         var: ports_parsed
