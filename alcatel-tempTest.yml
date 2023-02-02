@@ -12,8 +12,14 @@
         host: "{{ inventory_hostname }}"
         username: "{{ switch_username }}"
         password: "{{ switch_password }}"
-        command: show vlan port | json
+        command: show vlan port
       register: ports
+    - name: Parse to JSON
+      ansible.utils.cli_parse:
+        command: ports | json
+        parser:
+          name: ansible.utils.json
+        register: ports_parsed
     - name: Display result
       debug:
-        var: ports
+        var: ports_parsed
