@@ -19,7 +19,7 @@
         command: ports | json
         parser:
           name: ansible.utils.json
-        register: ports_parsed
+        set_fact: ports_parsed
     - name: Display result
       debug:
         var: ports_parsed
