@@ -27,6 +27,7 @@
         key: "PORT"
         parents:
           - ports_parsed
+      register: result
     - name: Display result
       debug:
-        var: ports_parsed
+        var: result
