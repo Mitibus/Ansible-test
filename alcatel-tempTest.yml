@@ -19,7 +19,7 @@
       ansible.utils.cli_parse:
         text: "{{ ports.output }}"
         parser:
-          name: ansible.netcommon.ttp
+          name: ansible.utils.ttp
           template_path: ./templates/alcatel_show_vlan_port.ttp
         set_fact: ports_parsed
     - name: Display result
