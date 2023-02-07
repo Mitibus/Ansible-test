@@ -1,6 +1,6 @@
 ---
 - name: This is a test for ale_aos_ping module
-  hosts: alcatelTest
+  hosts: alcatel
   connection: local
   roles:
     - gmoisio.ale_aos
