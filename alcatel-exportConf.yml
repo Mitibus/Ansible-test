@@ -1,6 +1,6 @@
 ---
 - name: Export show interfaces status and show configuration snapshot in a file with host name
-  hosts: alcatelTest
+  hosts: alcatel
   connection: local
   roles:
     - gmoisio.ale_aos
