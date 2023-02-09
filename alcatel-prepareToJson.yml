@@ -26,4 +26,4 @@
     - name: Concat output to a file
       copy:
         content: "{{ interface_brief.output + '\n' + configuration.output }}"
-        dest: "/home/Alcatel-Conf-Parser/import/{{ansible_date_time.iso8601_basic_short}}--{{ inventory_hostname }}"
+        dest: "/home/public/conf_exports/{{ansible_date_time.iso8601_basic_short}}--{{ inventory_hostname }}"
