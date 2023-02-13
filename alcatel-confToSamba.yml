@@ -21,10 +21,10 @@
         dest: "/home/public/export_conf_brutes/{{ inventory_hostname }}.cfg"
     - name: Copy configuration file to Samba Folder
       ansible.builtin.command:
-        cmd: smbclient
         argv:
+          - sambaclient
           - "{{ samba_share }}"
-          - "-c 'cd {{ source_folder }} ; put /home/public/export_conf_brutes/{{ inventory_hostname }}.cfg {{ inventory_hostname }}.cfg'"
+          - '-c ''cd "{{ source_folder }}" ; put "/home/public/export_conf_brutes/{{ inventory_hostname }}.cfg" "{{ inventory_hostname }}.cfg"'''
           - "-U 'PBNA\\{{ smb_user }}%{{ smb_password }}'"
     - name: Delete file on local storage
       ansible.builtin.command:
