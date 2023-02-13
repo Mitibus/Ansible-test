@@ -22,7 +22,7 @@
     - name: Copy configuration file to Samba Folder
       ansible.builtin.command:
         argv:
-          - sambaclient
+          - smbclient
           - "{{ samba_share }}"
           - '-c ''cd "{{ source_folder }}" ; put "/home/public/export_conf_brutes/{{ inventory_hostname }}.cfg" "{{ inventory_hostname }}.cfg"'''
           - "-U 'PBNA\\{{ smb_user }}%{{ smb_password }}'"
