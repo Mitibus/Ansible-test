@@ -1,7 +1,6 @@
 ---
 - name: Playbook to export alcatel switch configuration to a Samba folder
   hosts: alcatel
-  connection: local
   roles:
     - gmoisio.ale_aos
   vars:
@@ -20,6 +19,6 @@
         content: "{{ config.output }}"
         dest: "/home/public/export_conf_brutes/{{ inventory_hostname }}.cfg"
     - name: Copy configuration file to Samba Folder
-      copy:
+      ansible.windows.win_copy:
         src: "/home/public/export_conf_brutes/{{ inventory_hostname }}.cfg"
         dest: "{{ export_folder }}"
