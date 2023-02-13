@@ -21,4 +21,4 @@
         dest: "/home/public/export_conf_brutes/{{ inventory_hostname }}.cfg"
     - name: Copy configuration file to Samba Folder
       ansible.builtin.command:
-        cmd: smbclient {{ samba_share }} -c 'put {{ inventory_hostname }}.cfg' -U "PBNA\{{ smb_user }}%{{ smb_password }}"
+        cmd: smbclient {{ samba_share }} -c 'put /home/public/export_conf_brutes/{{ inventory_hostname }}.cfg' -U "PBNA\{{ smb_user }}%{{ smb_password }}"
