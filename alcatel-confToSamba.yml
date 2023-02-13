@@ -20,6 +20,6 @@
         content: "{{ config.output }}"
         dest: "/home/public/export_conf_brutes/{{ inventory_hostname }}.cfg"
     - name: Copy configuration file to Samba Folder
-      ansible.windows.win_copy:
+      copy:
         src: "/home/public/export_conf_brutes/{{ inventory_hostname }}.cfg"
         dest: "{{ export_folder }}"
