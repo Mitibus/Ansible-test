@@ -20,6 +20,5 @@
         content: "{{ config.output }}"
         dest: "/home/public/export_conf_brutes/{{ inventory_hostname }}.cfg"
     - name: Copy configuration file to Samba Folder
-      ansible.windows.win_copy:
-        src: "/home/public/export_conf_brutes/{{ inventory_hostname }}.cfg"
-        dest: "{{ export_folder }}"
+      ansible.builtin.command:
+        cmd: smbclient {{ samba_share }} -c 'put {{ inventory_hostname }}.cfg' -U "PBNA\{{ smb_user }}%{{ smb_password }}"
