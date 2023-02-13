@@ -17,7 +17,7 @@
       register: config
     - name: Create a configuration file
       copy:
-        content: "{{ interface_brief.output + '\n' + configuration.output }}"
+        content: "{{ config.output }}"
         dest: "/home/public/export_conf_brutes/{{ inventory_hostname }}.cfg"
     - name: Copy configuration file to Samba Folder
       ansible.windows.win_copy:
