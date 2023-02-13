@@ -25,7 +25,7 @@
           - smbclient
           - "{{ samba_share }}"
           - '-c ''cd "{{ source_folder }}" ; put "/home/public/export_conf_brutes/{{ inventory_hostname }}.cfg" "{{ inventory_hostname }}.cfg"'''
-          - "-U 'PBNA\\{{ smb_user }}%{{ smb_password }}'"
+          - -U 'PBNA\\{{ smb_user }}%{{ smb_password }}'
     - name: Delete file on local storage
       ansible.builtin.command:
         cmd: rm -rf /home/public/export_conf_brutes/{{ inventory_hostname }}.cfg
