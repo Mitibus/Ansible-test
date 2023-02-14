@@ -21,7 +21,7 @@
         dest: "/home/public/export_conf_brutes/{{ inventory_hostname }}.cfg"
     - name: Copy configuration file to Samba Folder
       ansible.builtin.command:
-        cmd: "smbclient //pbna.intra/gbna -U 'PBNA\\\\{{ smb_user }}%{{ smb_password }}' -c 'cd \"/giepbna/data/DSIH/Inventaire/Fichiers de Configuration/Alcatel - Aruba - HP/PBNA/0) Ansible Automatic Exports/\" ; put \"/home/public/export_conf_brutes/{{ inventory_hostname }}.cfg\" {{ inventory_hostname }}.cfg'"
+        cmd: "smbclient {{ samba_share }} -U 'PBNA\\\\{{ smb_user }}%{{ smb_password }}' -c 'cd \"/giepbna/data/DSIH/Inventaire/Fichiers de Configuration/Alcatel - Aruba - HP/PBNA/0) Ansible Automatic Exports/\" ; put \"/home/public/export_conf_brutes/{{ inventory_hostname }}.cfg\" {{ inventory_hostname }}.cfg'"
     - name: Clean files
       ansible.builtin.command:
         cmd: rm -rf "/home/public/export_conf_brutes/{{ inventory_hostname }}.cfg"
