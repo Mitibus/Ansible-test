@@ -19,9 +19,19 @@
       copy:
         content: "{{ config.output }}"
         dest: "/home/public/export_conf_brutes/{{ inventory_hostname }}.cfg"
+
+    - name: Get Timestamp from the system
+      shell: "date +%Y-%m-%d%H-%M-%S"
+      register: tstamp
+
+    - name: Create a folder for the day
+      ansible.builtin.command:
+        cmd: "smbclient {{ samba_share }} -U 'PBNA\\\\{{ smb_user }}%{{ smb_password }}' -c 'cd \"{{ source_folder }}\" ; mkidr {{ tstamp.stdout[0:10] }}'"
+
     - name: Copy configuration file to Samba Folder
       ansible.builtin.command:
-        cmd: "smbclient {{ samba_share }} -U 'PBNA\\\\{{ smb_user }}%{{ smb_password }}' -c 'cd \"{{ source_folder }}\" ; put \"/home/public/export_conf_brutes/{{ inventory_hostname }}.cfg\" {{ inventory_hostname }}.cfg'"
+        cmd: "smbclient {{ samba_share }} -U 'PBNA\\\\{{ smb_user }}%{{ smb_password }}' -c 'cd \"{{ source_folder }}\\{{ tstamp.stdout[0:10] }}\" ; put \"/home/public/export_conf_brutes/{{ inventory_hostname }}.cfg\" {{ inventory_hostname }}.cfg'"
+
     - name: Clean files
       ansible.builtin.command:
         cmd: rm -rf "/home/public/export_conf_brutes/{{ inventory_hostname }}.cfg"
